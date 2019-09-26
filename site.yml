@@ -1,0 +1,14 @@
+---
+- name: Install Docker
+  hosts: all
+  remote_user: root
+
+  roles:
+    - singleplatform-eng.users
+    - geerlingguy.docker
+  tasks:
+    - name: Set authorized key for user ubuntu copying it from current user
+      authorized_key:
+        user: deployer
+        state: present
+        key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"

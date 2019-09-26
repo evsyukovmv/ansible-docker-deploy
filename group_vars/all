@@ -1,0 +1,5 @@
+---
+users:
+  - username: deployer
+docker_users:
+  - deployer
